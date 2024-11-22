@@ -962,6 +962,7 @@ class ChartCertificationE2ETestSingle(ChartCertificationE2ETest):
             super().cleanup_release(expected_tag)
 
 
+# (jose) mark for deletion - this class isn't necessary if it's only used by version-change.
 @dataclass
 class ChartCertificationE2ETestMultiple(ChartCertificationE2ETest):
     secrets: E2ETestSecretRecursive = E2ETestSecretRecursive()

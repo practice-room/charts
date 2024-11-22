@@ -392,7 +392,7 @@ jobs:
           # The token we use for this changes for the Sandbox repository because the sandbox repository
           # receives PRs from the openshift-helm-charts-bot, and that same bot cannot approve its own
           # PRs which breaks workflows. Instead, for the Sandbox repo, we approve with the GHA bot.
-          github-token: ${{ github.repository == 'openshift-helm-charts/sandbox' && secrets.GITHUB_TOKEN || secrets.BOT_TOKEN }}
+          github-token: ${{ github.repository == 'practice-room/sandbox' && secrets.GITHUB_TOKEN || secrets.BOT_TOKEN }}
 
       - name: Merge PR
         id: merge_pr
