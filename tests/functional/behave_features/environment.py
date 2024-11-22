@@ -11,6 +11,7 @@ def workflow_test(context):
     context.workflow_test.cleanup()
 
 
+# (jose) mark for deletion - this fixture only seems like it's used in version change scenarios
 @fixture
 def submitted_chart_test(context):
     context.chart_test = ChartCertificationE2ETestMultiple()
@@ -25,6 +26,7 @@ def owners_file_test(context):
 
 def before_scenario(context, scenario):
     context.test_name = scenario.name.split("@")[0][:-4].split("]")[1]
+    # mark for deletion - this version-change tag will go away.
     if "version-change" in scenario.tags:
         print("[INFO] Using submitted charts fixture")
         use_fixture(submitted_chart_test, context)
