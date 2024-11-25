@@ -117,7 +117,9 @@ jobs:
       needs.determine-workflow-conditions.outputs.run-tests == 'true'
     uses: ./.github/workflows/behave.yml
     with:
-      tags: ${{ needs.determine-workflow-conditions.outputs.test-tags }}
+      # Default tags to 'full' if test-tags is unset for any reason by the time
+      # we get here.
+      tags: ${{ needs.determine-workflow-conditions.outputs.test-tags || 'full' }}
       behave-logging-level: WARNING
       pr-body: "Test triggered by release PR ${{ github.event.pull_request.html_url }}."
       # checkout parameters passed to ensure we're testing the release content
