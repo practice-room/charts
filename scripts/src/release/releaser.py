@@ -37,33 +37,6 @@ CHARTS_PR_BRANCH_NAME_PREFIX = "Release-"
 STAGE_PR_BRANCH_BODY_PREFIX = "Workflow and script updates from development repository"
 STAGE_PR_BRANCH_NAME_PREFIX = "Release-"
 
-# SCHEDULE_INSERT = [
-#     "  # Daily trigger to check updates",
-#     "  schedule:",
-#     '    - cron: "0 0 * * *"',
-# ]
-
-# (JOSE) Marked for removal. This function (and call locations)  modify
-# version_check.yml which will be removed.
-# def update_workflow():
-#     lines = []
-#     with open(VERSION_CHECK_YAML_FILE, "r") as schedule_file:
-#         lines = schedule_file.readlines()
-
-#         for line in lines:
-#             if line.strip() == "on:":
-#                 insert_location = lines.index(line) + 1
-#                 if SCHEDULE_INSERT[0] not in lines[insert_location].rstrip():
-#                     print("[INFO] add cron job to schedule.yaml")
-#                     lines.insert(insert_location, f"{SCHEDULE_INSERT[0]}\n")
-#                     lines.insert(insert_location + 1, f"{SCHEDULE_INSERT[1]}\n")
-#                     lines.insert(insert_location + 2, f"{SCHEDULE_INSERT[2]}\n")
-#                     break
-
-#     with open(VERSION_CHECK_YAML_FILE, "w") as schedule_file:
-#         schedule_file.write("".join(lines))
-
-
 def make_required_changes(release_info_dir, origin, destination):
     print(f"Make required changes from {origin} to {destination}")
 
@@ -207,9 +180,6 @@ def main():
 
     print("edit files in charts")
     os.chdir(args.charts_dir)
-    # (JOSE) Marked for removal. This function (and call locations)  modify
-    # version_check.yml which will be removed.
-    # update_workflow()
 
     organization = args.target_repository.split("/")[0]
     charts_repository = f"{organization}{gitutils.CHARTS_REPO}"
